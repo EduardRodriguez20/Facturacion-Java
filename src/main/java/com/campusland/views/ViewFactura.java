@@ -1,8 +1,10 @@
 package com.campusland.views;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.campusland.exceptiones.clienteexceptions.ClienteNullException;
+import com.campusland.exceptiones.clienteexceptions.ProductoNullException;
 import com.campusland.respository.models.Cliente;
 import com.campusland.respository.models.Factura;
 import com.campusland.respository.models.ItemFactura;
@@ -50,16 +52,22 @@ public class ViewFactura extends ViewMain{
         leer.nextLine();
         System.out.print("Ingrese el documento del cliente: ");
         String documento = leer.nextLine();
-        Cliente cliente;
         try {
-            cliente = serviceCliente.porDocumento(documento);
+            Cliente cliente = serviceCliente.porDocumento(documento);
             System.out.println(cliente.getFullName());
+            Factura factura = new Factura(LocalDateTime.now(), cliente);
+            agregarItems(factura);
+            serviceFactura.crear(factura);
         } catch (ClienteNullException e) {
             System.out.println(e.getMessage());
         }
+        
+    }
+
+    public static void agregarItems(Factura factura){
         boolean finished = false;
-        List<ItemFactura> items; 
         while (!finished) {
+            System.out.println("Ingreso de items");
             System.out.println("Para salir ingrese 0");
             System.out.println("Codigo - Productos");
             for (Producto producto : serviceProducto.listar()) {
@@ -67,9 +75,24 @@ public class ViewFactura extends ViewMain{
             }
             System.out.println("Ingrese el codigo del producto");
             int idProd = leer.nextInt();
-            // Producto producto = serviceProducto.porCodigo(idProd);
-            finished = true;
-        }
+            if (idProd == 0) {
+                finished = true;
+                System.out.println("Terminaste de ingresar items");
+            }else{
+                try {
+                    Producto producto = serviceProducto.porCodigo(idProd);
+                    if(producto != null){
+                        System.out.println("Ingrese la cantidad: ");
+                        int quantity = leer.nextInt();
+                        System.out.println("Producto: " + producto.getNombre() + " - cantidad: " + quantity);
+                        ItemFactura item = new ItemFactura(quantity, producto);
+                        factura.agregarItem(item);
+                    }
+                } catch (ProductoNullException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }        
     }
 
     public static void listarFactura() {
