@@ -1,5 +1,7 @@
 package com.campusland.respository.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cliente {
 
-   
+    private int    id;
     private String nombre;
     private String apellido;
     private String email;
@@ -17,9 +19,21 @@ public class Cliente {
     private String celular;   
     private String documento;
 
+    
+
+   
+    public Cliente(String nombre, String apellido, String email, String direccion, String celular, String documento) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.documento = documento;
+    }
 
     public String getFullName(){
         return this.nombre+" "+this.apellido;
+
     }
 
     public void imprimir(){

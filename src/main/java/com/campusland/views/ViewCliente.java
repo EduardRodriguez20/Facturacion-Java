@@ -28,14 +28,12 @@ public class ViewCliente extends ViewMain {
                 case 5:
                     eliminarCliente();
                     break;
-                case 6:
-                    break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
             }
 
-        } while (op >= 1 && op < 5);
+        } while (op >= 1 && op < 6);
 
     }
 
@@ -153,7 +151,7 @@ public class ViewCliente extends ViewMain {
     public static void eliminarCliente() {
         Cliente cliente = buscarGetCliente();
         if (cliente != null) {
-            serviceCliente.eliminar(cliente.getDocumento());
+            serviceCliente.eliminar(cliente);
             System.out.println("Elmininado el cliente con exito");
         } else {
             System.out.println("Se presentó un problema y no se puedo eliminar el cliente");

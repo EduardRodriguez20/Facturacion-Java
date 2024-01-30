@@ -44,8 +44,8 @@ public class ServiceClienteImpl  implements ServiceCliente {
     }
 
     @Override
-    public void eliminar(String id) {
-       this.crudRepositoryCliente.eliminar(id); 
+    public void eliminar(Cliente cliente) {
+       this.crudRepositoryCliente.eliminar(cliente); 
         
     }
     

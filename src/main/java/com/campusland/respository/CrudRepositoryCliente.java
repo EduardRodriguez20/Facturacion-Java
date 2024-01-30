@@ -14,6 +14,6 @@ public interface CrudRepositoryCliente {
 
     void editar(Cliente cliente);
 
-    void eliminar(String id);
+    void eliminar(Cliente cliente);
 
 }

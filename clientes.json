@@ -1,0 +1,20 @@
+[
+    {
+        "nombre": "camilo",
+        "apellido": "perez",
+        "email": "cperez@gmail.com",
+        "direccion": "31456665",
+        "celular": "xxxx",
+        "documento": "1001",
+        "fullName": "camilo perez"
+    },
+    {
+        "nombre": "juan",
+        "apellido": "gomez",
+        "email": "jgomez@gmail.com",
+        "direccion": "3145555",
+        "celular": "xxxx",
+        "documento": "1002",
+        "fullName": "juan gomez"
+    }
+]

@@ -26,14 +26,12 @@ public class ViewFactura extends ViewMain{
                 case 2:
                     listarFactura();
                     break;
-                case 3:
-                    break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
             }
 
-        } while (op >= 1 && op < 2);
+        } while (op >= 1 && op < 6);
 
     }
 

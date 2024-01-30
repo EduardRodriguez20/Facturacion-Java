@@ -28,14 +28,12 @@ public class ViewProducto extends ViewMain {
                 case 5:
                     eliminarProducto();
                     break;
-                case 6:
-                    break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
             }
 
-        } while (op >= 1 && op < 5);
+        } while (op >= 1 && op < 6);
 
     }
 

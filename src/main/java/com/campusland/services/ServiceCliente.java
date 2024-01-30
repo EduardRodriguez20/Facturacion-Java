@@ -15,6 +15,6 @@ public interface ServiceCliente {
 
     void editar(Cliente producto);
 
-    void eliminar(String id);
+    void eliminar(Cliente cliente);
 
 }
